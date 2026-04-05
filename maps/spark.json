@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "metadata": {},
+  "metadata": {"maputnik:renderer": "mlgljs"},
   "light": {"color": "rgba(0, 0, 0, 1)"},
   "sources": {
     "ne2_shaded": {
@@ -1520,6 +1520,7 @@
         ["match", ["get", "brunnel"], ["bridge", "tunnel"], false, true],
         ["==", ["get", "class"], "rail"]
       ],
+      "layout": {"line-cap": "butt", "line-join": "miter"},
       "paint": {
         "line-color": "#bbb",
         "line-dasharray": [0.2, 8],
@@ -1957,33 +1958,6 @@
       }
     },
     {
-      "id": "cablecar",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 13,
-      "filter": ["==", ["get", "subclass"], "cable_car"],
-      "layout": {"line-cap": "round"},
-      "paint": {
-        "line-color": "hsl(0,0%,70%)",
-        "line-width": ["interpolate", ["linear"], ["zoom"], 11, 1, 19, 2.5]
-      }
-    },
-    {
-      "id": "cablecar-dash",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 13,
-      "filter": ["==", ["get", "subclass"], "cable_car"],
-      "layout": {"line-cap": "round"},
-      "paint": {
-        "line-color": "hsl(0,0%,70%)",
-        "line-dasharray": [2, 3],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 11, 3, 19, 5.5]
-      }
-    },
-    {
       "id": "boundary_3",
       "type": "line",
       "source": "openmaptiles",
@@ -2385,8 +2359,6 @@
       "minzoom": 10,
       "filter": ["all", ["has", "iata"]],
       "layout": {
-        "icon-image": "airport_11",
-        "icon-size": 1,
         "text-anchor": "top",
         "text-field": [
           "case",
@@ -2405,39 +2377,6 @@
         "text-color": "rgba(255, 255, 255, 1)",
         "text-halo-blur": 0.5,
         "text-halo-color": "rgba(71, 71, 71, 1)",
-        "text-halo-width": 2
-      }
-    },
-    {
-      "id": "label_other",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "place",
-      "minzoom": 0,
-      "filter": [
-        "match",
-        ["get", "class"],
-        ["city", "continent", "country", "state", "town", "village"],
-        false,
-        true
-      ],
-      "layout": {
-        "text-field": [
-          "case",
-          ["has", "name:nonlatin"],
-          ["concat", ["get", "name:latin"], "\n", ["get", "name:nonlatin"]],
-          ["coalesce", ["get", "name_en"], ["get", "name"]]
-        ],
-        "text-font": ["Noto Sans Italic"],
-        "text-letter-spacing": 0.1,
-        "text-max-width": 9,
-        "text-size": 16,
-        "text-transform": "uppercase"
-      },
-      "paint": {
-        "text-color": "rgba(255, 255, 255, 1)",
-        "text-halo-blur": 1,
-        "text-halo-color": "rgba(0, 0, 0, 1)",
         "text-halo-width": 2
       }
     },
