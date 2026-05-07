@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.35.0/dist/tabler-icons.min.css" />
-  <script type="module" crossorigin src="/assets/index-CWoNa4DC.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-PRZBgvko.css">
+  <script type="module" crossorigin src="./assets/index-BIHnI-RM.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Bj2dvUFF.css">
 </head>
 
 <body>
@@ -19,9 +19,9 @@
     <div id="toolbar">
         <span id="app-name">Rendr</span>
         <div id="toolbar-menu">
-            <button class="toolbar-menu-item">File</button>
-            <button class="toolbar-menu-item">Edit</button>
-            <button class="toolbar-menu-item">View</button>
+            <button id="menu-file" class="toolbar-menu-item">File</button>
+            <button id="menu-edit" class="toolbar-menu-item">Edit</button>
+            <button id="menu-view" class="toolbar-menu-item">View</button>
         </div>
         <div id="toolbar-actions">
             <label id="import-btn">
@@ -59,7 +59,7 @@
 
         <div id="timeline-preview" class="panel">
             <div class="panel-head">
-                <span class="panel-title">Timeline</span>
+                <span class="panel-title">Sequence</span>
             </div>
             <div class="preview-frame">
                 <canvas id="preview-canvas" aria-label="Timeline preview"></canvas>
@@ -118,7 +118,10 @@
     </div>
 
     <div id="statusbar">
-        <span id="render-status">No tasks</span>
+        <span id="version-code">Rendr v0.0.1 ALPHA</span>
+        <div id="render-status-wrapper">
+            <span id="render-status">idle</span>
+        </div>
     </div>
 
     <!-- Video decoder: outside any overflow:hidden so browser audio path is unrestricted -->
