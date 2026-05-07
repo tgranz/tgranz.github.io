@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rendr: FOSS Web-based Video Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.35.0/dist/tabler-icons.min.css" />
+  <script type="module" crossorigin src="/assets/index-CWoNa4DC.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-PRZBgvko.css">
+</head>
+
+<body>
+
+    <!-- TOOLBAR -->
+    <div id="toolbar">
+        <span id="app-name">Rendr</span>
+        <div id="toolbar-menu">
+            <button class="toolbar-menu-item">File</button>
+            <button class="toolbar-menu-item">Edit</button>
+            <button class="toolbar-menu-item">View</button>
+        </div>
+        <div id="toolbar-actions">
+            <label id="import-btn">
+                <input id="clip-upload" type="file" accept="video/*" multiple />
+                <i class="ti ti-file-import"></i> Import
+            </label>
+            <button id="render-btn" type="button"><i class="ti ti-device-floppy"></i> Render</button>
+        </div>
+    </div>
+
+    <!-- TOP SHELL: Bin | Source | Program -->
+    <div id="top-shell">
+
+        <div id="clip-bin-section" class="panel">
+            <div class="panel-head">
+                <span class="panel-title">Project Bin</span>
+                <span style="display: none;" id="clip-count">0 clips</span>
+            </div>
+            <ul id="clip-bin" class="clip-list"></ul>
+        </div>
+
+        <div id="resizer-bin-clip" class="panel-resizer vertical" role="separator" aria-orientation="vertical" aria-label="Resize clip bin and clip preview"></div>
+
+        <div id="clip-preview" class="panel">
+            <div class="panel-head">
+                <span class="panel-title">Clip Preview</span>
+            </div>
+            <div class="preview-frame">
+                <video id="clip-preview-video" controls playsinline preload="metadata"></video>
+                <span class="preview-empty-label">No clip selected</span>
+            </div>
+        </div>
+
+        <div id="resizer-clip-timeline" class="panel-resizer vertical" role="separator" aria-orientation="vertical" aria-label="Resize clip preview and timeline preview"></div>
+
+        <div id="timeline-preview" class="panel">
+            <div class="panel-head">
+                <span class="panel-title">Timeline</span>
+            </div>
+            <div class="preview-frame">
+                <canvas id="preview-canvas" aria-label="Timeline preview"></canvas>
+            </div>
+            <div id="transport">
+                <button id="prev-frame-btn" type="button" title="Previous Frame"><i class="ti ti-chevron-left"></i></button>
+                <button id="play-btn" type="button" title="Play/Pause"><i class="ti ti-player-play-filled"></i></button>
+                <button id="next-frame-btn" type="button" title="Next Frame"><i class="ti ti-chevron-right"></i></button>
+                <span id="preview-time">00:00:00 / 00:00:00</span>
+                <input id="seek" style="display: none;" type="range" min="0" max="0" value="0" step="0.01" />
+
+                <div class="audio-meter-wrap">
+                    <div class="audio-meter" aria-label="Timeline audio meter">
+                        <div id="audio-meter-left" class="audio-meter-bar" title="Left channel"></div>
+                        <div id="audio-meter-right" class="audio-meter-bar" title="Right channel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="resizer-horizontal" class="panel-resizer horizontal" role="separator" aria-orientation="horizontal" aria-label="Resize timeline height"></div>
+
+    <div id="bottom-shell">
+
+        <div id="timeline-controls">
+            <button id="split-clip-btn" type="button" title="Split at playhead"><i class="ti ti-blade"></i></button>
+
+            <div style="width: 100%"></div>
+
+            <label class="zoom-wrap">
+                <i class="ti ti-zoom-in-area"></i>
+                <input id="zoom-range" type="range" min="4" max="240" step="2" value="28" />
+                <span id="zoom-readout">28 px/s</span>
+            </label>
+        </div>
+
+        <div class="timeline-area">
+            <div id="timeline-empty" class="timeline-empty">Add clips from the bin to start editing.</div>
+            <div class="timeline-body">
+                <div id="timeline-track-headers" class="timeline-track-headers">
+                    <div class="track-headers-ruler-spacer"></div>
+                    <div id="track-header-list"></div>
+                    <button id="add-track-btn" type="button"><i class="ti ti-plus"></i> Add Track</button>
+                </div>
+                <div id="timeline-scroll" class="timeline-scroll">
+                    <div id="timeline-canvas" class="timeline-canvas">
+                        <div id="timeline-ruler" class="timeline-ruler"></div>
+                        <div id="timeline-playhead" class="timeline-playhead" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="statusbar">
+        <span id="render-status">No tasks</span>
+    </div>
+
+    <!-- Video decoder: outside any overflow:hidden so browser audio path is unrestricted -->
+    <video id="preview-video" playsinline preload="auto"></video>
+
+</body>
+
+</html>
