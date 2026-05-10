@@ -1,132 +1,181 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rendr: FOSS Web-based Video Editor</title>
+    <!--Meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendr | New Project</title>
+
+    <!--OG Tags-->
+    <meta property="og:title" content="Rendr: FOSS Web-based Video Editor">
+    <meta property="og:description" content="Rendr is a free and open source web based video editor designed for speed and simplicity. Runs on your device only; your videos are uploaded nowhere.">
+    <meta property="og:type" content="website">
+    <!--<meta property="og:url" content="https://example.com">
+    <meta property="og:image" content="https://example.com/image.jpg">-->
+
+    <!--Icons and font-->
+    <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.35.0/dist/tabler-icons.min.css" />
-  <script type="module" crossorigin src="./assets/index-BhFjHBeO.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Bj2dvUFF.css">
+
+    <!--Stylesheet-->
+  <script type="module" crossorigin src="./assets/index-qms3qMQf.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CkPt669s.css">
 </head>
-
 <body>
+    <main>
+        <header>
+            <div class="menubar">
+                <button class="app-title" id="menu-app">Rendr</button>
+                <button id="menu-file">File</button>
+                <button id="menu-edit">Edit</button>
+                <button id="menu-view">View</button>
+                <button id="menu-help">Help</button>
+            </div>
+            <div class="menubar" id="secondary-menubar">
+                <button id="shortcut-import"><i class="ti ti-upload"></i> Import Media</button>
+                <!--<button id="shortcut-upload"><i class="ti ti-file-upload"></i> Upload Project</button>-->
+                <!--<button id="shortcut-save"><i class="ti ti-device-floppy"></i> Save Project</button>-->
+            </div>
+            <div id="progress" style="display: none;">
+                <span id="progress-label" class="mono">No tasks</span>
+            </div>
+        </header>
 
-    <!-- TOOLBAR -->
-    <div id="toolbar">
-        <span id="app-name">Rendr</span>
-        <div id="toolbar-menu">
-            <button id="menu-file" class="toolbar-menu-item">File</button>
-            <button id="menu-edit" class="toolbar-menu-item">Edit</button>
-            <button id="menu-view" class="toolbar-menu-item">View</button>
+
+        <div id="top-shell">
+            <div class="panel" id="panel-1">
+                <div class="panel-head">
+                    <button class="panel-selection">
+                        <i class="ti ti-chevron-down"></i>
+                        <span class="panel-title">Project Bin</span>
+                    </button>
+                    <div class="panel-actions"></div>
+                </div>
+                <div class="panel-content"></div>
+            </div>
+
+            <div id="resizer-panel-1" class="panel-resizer"></div>
+
+            <div class="panel" id="panel-2">
+                <div class="panel-head">
+                    <button class="panel-selection">
+                        <i class="ti ti-chevron-down"></i>
+                        <span class="panel-title">Clip Properties</span>
+                    </button>
+                    <div class="panel-actions"></div>
+                </div>
+                <div class="panel-content"></div>
+            </div>
+
+            <div id="resizer-panel-2" class="panel-resizer"></div>
+
+            <div class="panel" id="panel-3" style="width: 400px;">
+                <div class="panel-head">
+                    <button class="panel-selection">
+                        <i class="ti ti-chevron-down"></i>
+                        <span class="panel-title">Preview</span>
+                    </button>
+                    <div class="panel-actions"></div>
+                </div>
+                <div class="panel-content"></div>
+            </div>
         </div>
-        <div id="toolbar-actions">
-            <label id="import-btn">
-                <input id="clip-upload" type="file" accept="video/*" multiple />
-                <i class="ti ti-file-import"></i> Import
-            </label>
-            <button id="render-btn" type="button"><i class="ti ti-device-floppy"></i> Render</button>
+
+        <div id="resizer-shells"></div>
+
+        <div id="bottom-shell">
+            <div id="tracks-list">
+                <div id="tracks-list-toolbar"></div>
+
+                <div class="track-item video-track">
+                    <span class="track-label">Video 1</span>
+                    <div class="track-actions">
+                        <button><i class="ti ti-trash"></i></button>
+                        <button><i class="ti ti-eye"></i></button>
+                        <button><i class="ti ti-lock"></i></button>
+                    </div>
+                </div>
+
+                <div class="track-item audio-track">
+                    <span class="track-label">Audio 1</span>
+                    <div class="track-actions">
+                        <button><i class="ti ti-trash"></i></button>
+                        <button><i class="ti ti-volume"></i></button>
+                        <button><i class="ti ti-lock"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div id="timeline-wrapper">
+                <div id="timeline-toolbar"></div>
+
+                <div id="timeline">
+                    <div id="timeline-ruler"></div>
+                    <div id="timeline-cursor"></div>
+                    <div id="timeline-playbar"></div>
+                    <div id="timeline-playhead"></div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- TOP SHELL: Bin | Source | Program -->
-    <div id="top-shell">
 
-        <div id="clip-bin-section" class="panel">
-            <div class="panel-head">
-                <span class="panel-title">Project Bin</span>
-                <span style="display: none;" id="clip-count">0 clips</span>
+        <footer>
+            <p id="rendr-version" class="mono">Rendr v0.2.0 alpha</p>
+            <div id="message" class="mono"></div>
+        </footer>
+    </main>
+
+    <div id="settings-wrapper" style="display: none;">
+        <div id="settings-modal">
+            <div id="settings-header">
+                <h2>Settings</h2>
+                <button id="settings-close"><i class="ti ti-x"></i></button>
             </div>
-            <ul id="clip-bin" class="clip-list"></ul>
-        </div>
-
-        <div id="resizer-bin-clip" class="panel-resizer vertical" role="separator" aria-orientation="vertical" aria-label="Resize clip bin and clip preview"></div>
-
-        <div id="clip-preview" class="panel">
-            <div class="panel-head">
-                <span class="panel-title">Clip Preview</span>
-            </div>
-            <div class="preview-frame">
-                <video id="clip-preview-video" controls playsinline preload="metadata"></video>
-                <span class="preview-empty-label">No clip selected</span>
-            </div>
-        </div>
-
-        <div id="resizer-clip-timeline" class="panel-resizer vertical" role="separator" aria-orientation="vertical" aria-label="Resize clip preview and timeline preview"></div>
-
-        <div id="timeline-preview" class="panel">
-            <div class="panel-head">
-                <span class="panel-title">Sequence</span>
-            </div>
-            <div class="preview-frame">
-                <canvas id="preview-canvas" aria-label="Timeline preview"></canvas>
-            </div>
-            <div id="transport">
-                <button id="prev-frame-btn" type="button" title="Previous Frame"><i class="ti ti-chevron-left"></i></button>
-                <button id="play-btn" type="button" title="Play/Pause"><i class="ti ti-player-play-filled"></i></button>
-                <button id="next-frame-btn" type="button" title="Next Frame"><i class="ti ti-chevron-right"></i></button>
-                <span id="preview-time">00:00:00 / 00:00:00</span>
-                <input id="seek" style="display: none;" type="range" min="0" max="0" value="0" step="0.01" />
-
-                <div class="audio-meter-wrap">
-                    <div class="audio-meter" aria-label="Timeline audio meter">
-                        <div id="audio-meter-left" class="audio-meter-bar" title="Left channel"></div>
-                        <div id="audio-meter-right" class="audio-meter-bar" title="Right channel"></div>
+            <div id="settings-content">
+                <div id="settings-category-list">
+                    <button class="settings-category active" id="category-general">General</button>
+                    <button class="settings-category" id="category-audio">Audio</button>
+                </div>
+                <div id="settings-list-wrapper">
+                    <div class="settings-list" id="settings-general">
+                        <div class="setting-item">
+                            <label for="setting-theme">Theme</label>
+                            <select id="setting-theme">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-list" id="settings-audio">
+                        <h2 class="settings-list-title">Audio Meter</h2>
+                        <div class="setting-item">
+                            <label for="setting-audio-sampling-rate">Sampling Rate</label>
+                            <div class="range-control">
+                                <input type="range" id="setting-audio-sampling-rate" min="1" max="100" value="50">
+                                <span class="range-value" id="setting-audio-sampling-rate-value">50 Hz</span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label for="setting-audio-peak-hold">Peak Hold</label>
+                            <div class="range-control">
+                                <input type="range" id="setting-audio-peak-hold" min="0" max="2000" step="10" value="120">
+                                <span class="range-value" id="setting-audio-peak-hold-value">120 ms</span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label for="setting-audio-peak-decay">Peak Decay</label>
+                            <div class="range-control">
+                                <input type="range" id="setting-audio-peak-decay" min="1" max="96" value="12">
+                                <span class="range-value" id="setting-audio-peak-decay-value">12 dB/s</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-    <div id="resizer-horizontal" class="panel-resizer horizontal" role="separator" aria-orientation="horizontal" aria-label="Resize timeline height"></div>
-
-    <div id="bottom-shell">
-
-        <div id="timeline-controls">
-            <button id="split-clip-btn" type="button" title="Split at playhead"><i class="ti ti-blade"></i></button>
-
-            <div style="width: 100%"></div>
-
-            <label class="zoom-wrap">
-                <i class="ti ti-zoom-in-area"></i>
-                <input id="zoom-range" type="range" min="4" max="240" step="2" value="28" />
-                <span id="zoom-readout">28 px/s</span>
-            </label>
-        </div>
-
-        <div class="timeline-area">
-            <div id="timeline-empty" class="timeline-empty">Add clips from the bin to start editing.</div>
-            <div class="timeline-body">
-                <div id="timeline-track-headers" class="timeline-track-headers">
-                    <div class="track-headers-ruler-spacer"></div>
-                    <div id="track-header-list"></div>
-                    <button id="add-track-btn" type="button"><i class="ti ti-plus"></i> Add Track</button>
-                </div>
-                <div id="timeline-scroll" class="timeline-scroll">
-                    <div id="timeline-canvas" class="timeline-canvas">
-                        <div id="timeline-ruler" class="timeline-ruler"></div>
-                        <div id="timeline-playhead" class="timeline-playhead" aria-hidden="true"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="statusbar">
-        <span id="version-code">Rendr v0.0.1 ALPHA</span>
-        <div id="render-status-wrapper">
-            <span id="render-status">idle</span>
-        </div>
-    </div>
-
-    <!-- Video decoder: outside any overflow:hidden so browser audio path is unrestricted -->
-    <video id="preview-video" playsinline preload="auto"></video>
-
 </body>
-
+
 </html>
