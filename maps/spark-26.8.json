@@ -871,7 +871,7 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(35, 134, 175, 1)",
+        "line-color": "rgba(0, 0, 0, 1)",
         "line-opacity": 1,
         "line-width": [
           "interpolate",
@@ -908,7 +908,7 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(35, 134, 175, 1)",
+        "line-color": "rgba(0, 0, 0, 1)",
         "line-opacity": 1,
         "line-width": [
           "interpolate",
@@ -944,7 +944,7 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(78, 78, 78, 1)",
+        "line-color": "rgba(102, 102, 102, 1)",
         "line-opacity": 1,
         "line-width": [
           "interpolate",
@@ -974,7 +974,7 @@
       ],
       "layout": {"line-cap": "butt", "line-join": "round"},
       "paint": {
-        "line-color": "#e9ac77",
+        "line-color": "rgba(0, 0, 0, 1)",
         "line-width": [
           "interpolate",
           ["exponential", 1.2],
@@ -1001,7 +1001,7 @@
       ],
       "layout": {"line-cap": "butt", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(35, 134, 175, 1)",
+        "line-color": "rgba(0, 0, 0, 1)",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0, 8, 1],
         "line-width": [
           "interpolate",
@@ -1032,7 +1032,7 @@
       ],
       "layout": {"line-cap": "butt", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(21, 77, 100, 1)",
+        "line-color": "rgba(0, 0, 0, 1)",
         "line-width": [
           "interpolate",
           ["exponential", 1.2],
@@ -1063,7 +1063,7 @@
       ],
       "layout": {"line-cap": "butt", "line-join": "round"},
       "paint": {
-        "line-color": "rgba(49, 183, 239, 1)",
+        "line-color": "rgba(0, 0, 0, 1)",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 4, 0, 5, 1],
         "line-width": [
           "interpolate",
@@ -1299,9 +1299,9 @@
           "interpolate",
           ["exponential", 1.2],
           ["zoom"],
-          6.5,
+          4,
           0,
-          7,
+          5,
           0.5,
           20,
           18
@@ -1334,9 +1334,9 @@
           "interpolate",
           ["exponential", 1.2],
           ["zoom"],
-          6.5,
+          4,
           0,
-          7,
+          5,
           0.5,
           20,
           18
@@ -1971,10 +1971,12 @@
         ["!=", ["get", "disputed"], 1],
         ["!", ["has", "claimed_by"]]
       ],
+      "layout": {"line-cap": "butt"},
       "paint": {
-        "line-color": "hsl(0,0%,70%)",
-        "line-dasharray": [1, 1],
-        "line-width": ["interpolate", ["linear", 1], ["zoom"], 7, 1, 11, 2]
+        "line-color": "rgba(197, 197, 197, 1)",
+        "line-dasharray": [2, 1],
+        "line-width": ["interpolate", ["linear", 1], ["zoom"], 3, 1, 11, 2],
+        "line-translate-anchor": "map"
       }
     },
     {
@@ -1991,7 +1993,7 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "hsl(248,7%,66%)",
+        "line-color": "rgba(115, 115, 115, 1)",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 0, 0.4, 4, 1],
         "line-width": ["interpolate", ["linear"], ["zoom"], 3, 1, 5, 1.2, 12, 3]
       }
@@ -2007,7 +2009,7 @@
         ["==", ["get", "disputed"], 1]
       ],
       "paint": {
-        "line-color": "hsl(248,7%,66%)",
+        "line-color": "rgba(82, 82, 82, 1)",
         "line-dasharray": [1, 2],
         "line-width": ["interpolate", ["linear"], ["zoom"], 3, 1, 5, 1.2, 12, 3]
       }
@@ -2174,8 +2176,8 @@
         "text-size": 14
       },
       "paint": {
-        "text-color": "#495e91",
-        "text-halo-color": "rgba(255,255,255,0.7)",
+        "text-color": "rgba(137, 171, 253, 1)",
+        "text-halo-color": "rgba(38, 38, 38, 1)",
         "text-halo-width": 1.5
       }
     },
@@ -2206,12 +2208,13 @@
         ],
         "text-font": ["Noto Sans Regular"],
         "text-rotation-alignment": "map",
-        "text-size": ["interpolate", ["linear"], ["zoom"], 13, 12, 14, 13]
+        "text-size": 14
       },
       "paint": {
-        "text-color": "#666",
+        "text-color": "rgba(255, 255, 255, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-width": 1
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(0, 0, 0, 1)"
       }
     },
     {
@@ -2237,12 +2240,13 @@
         ],
         "text-font": ["Noto Sans Regular"],
         "text-rotation-alignment": "map",
-        "text-size": ["interpolate", ["linear"], ["zoom"], 13, 12, 14, 13]
+        "text-size": 16
       },
       "paint": {
-        "text-color": "#666",
+        "text-color": "rgba(255, 255, 255, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-width": 1
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(0, 0, 0, 1)"
       }
     },
     {
@@ -2401,7 +2405,7 @@
         ],
         "text-font": ["Noto Sans Regular"],
         "text-max-width": 8,
-        "text-size": 16
+        "text-size": 14
       },
       "paint": {
         "text-color": "rgba(255, 255, 255, 1)",
@@ -2431,7 +2435,7 @@
         ],
         "text-font": ["Noto Sans Regular"],
         "text-max-width": 8,
-        "text-size": 16
+        "text-size": 14
       },
       "paint": {
         "text-color": "rgba(255, 255, 255, 1)",
@@ -2455,10 +2459,10 @@
           ["concat", ["get", "name:latin"], "\n", ["get", "name:nonlatin"]],
           ["coalesce", ["get", "name_en"], ["get", "name"]]
         ],
-        "text-font": ["Noto Sans Italic"],
+        "text-font": ["Noto Sans Regular"],
         "text-letter-spacing": 0.2,
         "text-max-width": 9,
-        "text-size": 16,
+        "text-size": 14,
         "text-transform": "uppercase"
       },
       "paint": {
@@ -2494,7 +2498,7 @@
         "text-font": ["Noto Sans Regular"],
         "text-max-width": 8,
         "text-offset": [0, -0.1],
-        "text-size": 16
+        "text-size": 14
       },
       "paint": {
         "text-color": "rgba(255, 255, 255, 1)",
@@ -2529,7 +2533,7 @@
         "text-font": ["Noto Sans Bold"],
         "text-max-width": 8,
         "text-offset": [0, -0.2],
-        "text-size": 16
+        "text-size": 14
       },
       "paint": {
         "text-color": "#000",
